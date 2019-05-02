@@ -7,6 +7,7 @@ export default class Todos extends Component {
 
     deleteAllTodo(dispatch,e){
         dispatch({type:"DELETE_ALL_TODO",payload:""})
+        e.preventDefault();
     }
 
     constructor(props){

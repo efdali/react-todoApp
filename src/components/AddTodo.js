@@ -26,7 +26,6 @@ class Form extends React.Component {
           return (
             <div className="card-body">
               <form onSubmit={this.addTodo.bind(this,dispatch)}>
-                <div className="card-body">
                   <div className="form-row">
                     <div className="form-group col-md-6">
                       <input
@@ -45,7 +44,6 @@ class Form extends React.Component {
                   >
                     Add Todo
                   </button>
-                </div>
               </form>
             </div>
           );
