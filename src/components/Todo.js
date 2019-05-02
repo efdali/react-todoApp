@@ -8,8 +8,7 @@ class Todo extends Component {
   };
 
   render() {
-    const { pos,title, isVisible } = this.props;
-    console.log(pos);
+    const { title, isVisible } = this.props;
     return (
       <UserConsumer>
         {value => {

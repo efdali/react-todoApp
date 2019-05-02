@@ -11,7 +11,7 @@ const reducer=(state,action)=>{
       todos: state.todos.filter(todo=>action.payload!==todo.title)
     }
     case "ADD_TODO":
-    writeLocalStorage(action.payload);
+    saveLocalStorage(action.payload);
     return {
       ...state,
       todos:[...state.todos,action.payload]
@@ -52,7 +52,7 @@ function getLocalStorage(){
     return todos;
 }
 
-function writeLocalStorage(todo){
+function saveLocalStorage(todo){
   let todos=getLocalStorage();
   todos.push(todo);
   localStorage.setItem("todos",JSON.stringify(todos));
