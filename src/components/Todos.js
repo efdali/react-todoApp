@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
 import TodoConsumer from "../context";
-var uniqid = require("uniqid");
 
 export default class Todos extends Component {
   deleteAllTodo(dispatch, e) {
@@ -51,7 +50,8 @@ export default class Todos extends Component {
                   }
                   return (
                     <Todo
-                      key={uniqid()}
+                      key={todo.id}
+                      id={todo.id}
                       title={todo.title}
                       isVisible={isVisible}
                     />

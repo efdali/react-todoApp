@@ -8,7 +8,7 @@ const reducer=(state,action)=>{
     deleteTodofromLocalStorage(action.payload);
     return{
       ...state,
-      todos: state.todos.filter(todo=>action.payload!==todo.title)
+      todos: state.todos.filter(todo=>action.payload!==todo.id)
     }
     case "ADD_TODO":
     saveLocalStorage(action.payload);
@@ -31,11 +31,11 @@ function deleteAllTodosFromStorage(){
   localStorage.setItem("todos",JSON.stringify([]));
 }
 
-function deleteTodofromLocalStorage(title){
+function deleteTodofromLocalStorage(id){
     let todos=getLocalStorage();
 
     todos.forEach((todo,index) => {
-        if(todo.title===title){
+        if(todo.id===id){
           todos.splice(index,1);
         }
     });
@@ -62,11 +62,18 @@ export class TodoProvider extends Component {
 
 
   state={
-    todos:getLocalStorage(),
+    todos:[],
     dispatch:action=>{
       this.setState(state=>reducer(state,action))
     }
   }  
+
+  componentDidMount() {
+    this.setState({
+      todos:getLocalStorage()
+    });
+  }
+  
 
   render() {
     return (

@@ -1,5 +1,7 @@
 import React from "react";
 import TodoConsumer from "../context";
+var uniqid = require("uniqid");
+
 class Form extends React.Component {
   state = {
     todo: ""
@@ -14,7 +16,8 @@ class Form extends React.Component {
   addTodo = (dispatch, e) => {
       e.preventDefault();
       const{todo}=this.state;
-      dispatch({type:"ADD_TODO",payload:{title:todo}});
+      const id=uniqid();
+      dispatch({type:"ADD_TODO",payload:{id:id,title:todo}});
       this.setState({todo:""});
   };
 

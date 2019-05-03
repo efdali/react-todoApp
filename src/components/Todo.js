@@ -4,7 +4,8 @@ import "../App.css";
 class Todo extends Component {
   deleteTodo = (dispatch, e) => {
     e.preventDefault();
-    dispatch({ type: "DELETE_TODO", payload: this.props.title });
+    const{id}=this.props;
+    dispatch({ type: "DELETE_TODO", payload: id });
   };
 
   render() {
