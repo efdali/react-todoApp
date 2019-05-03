@@ -16,6 +16,9 @@ class Form extends React.Component {
   addTodo = (dispatch, e) => {
       e.preventDefault();
       const{todo}=this.state;
+      if(todo.trim()===""){
+        return;
+      }
       const id=uniqid();
       dispatch({type:"ADD_TODO",payload:{id:id,title:todo}});
       this.setState({todo:""});
